@@ -1,0 +1,20 @@
+Creation of DataFrame
+In [2]: import pandas as pd
+In [3]: data=pd.DataFrame([])
+In [4]: data
+Out[4]:
+Empty DataFrame
+Columns: []
+Index: []
+In [5]: data=pd.DataFrame({})
+In [6]: data
+Out[6]:
+Empty DataFrame
+Columns: []
+Index: []
+In [7]: data=pd.DataFrame(())
+In [8]: data
+Out[8]:
+Empty DataFrame
+Columns: []
+Index: []
