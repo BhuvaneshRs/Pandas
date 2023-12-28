@@ -1,0 +1,41 @@
+Creating DataFrame
+In [10]: data=pd.DataFrame({'x':[40,60,70,88,45,90]})
+In [11]: data
+Out[11]:
+    x
+0  40
+1  60
+2  70
+3  88
+4  45
+5  90
+In [12]: data=pd.DataFrame([1,2,3,4,5])
+In [13]: data
+Out[13]:
+   0
+0  1
+1  2
+2  3
+3  4
+4  5
+
+In [14]: data=pd.DataFrame([i for i in range(10)])
+In [15]: data
+Out[15]:
+   0
+0  0
+1  1
+2  2
+3  3
+4  4
+5  5
+6  6
+7  7
+8  8
+9  9
+In [16]: import numpy as np
+In [17]: data=pd.DataFrame([np.random.randint(10,size=10)])
+In [18]: data
+Out[18]:
+   0  1  2  3  4  5  6  7  8  9
+0  0  2  1  5  6  3  2  9  5  5
