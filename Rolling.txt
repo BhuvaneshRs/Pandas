@@ -1,0 +1,83 @@
+In [45]: data=pd.DataFrame({"Name":['Bhuvanesh','Roseline','Archana','Vinoth','Varsha','Manoj','Gokulnath','Nandha','Anandhi','Santhiya','Rose'],'Expenses'
+    ...: :[3000,7000,8000,2500,11000,7500,900,1300,956,785,945]})
+
+In [46]: data
+Out[46]:
+         Name  Expenses
+0   Bhuvanesh      3000
+1    Roseline      7000
+2     Archana      8000
+3      Vinoth      2500
+4      Varsha     11000
+5       Manoj      7500
+6   Gokulnath       900
+7      Nandha      1300
+8     Anandhi       956
+9    Santhiya       785
+10       Rose       945
+
+In [47]: data['Expenses'].rolling(window=3).mean()
+Out[47]:
+0             NaN
+1             NaN
+2     6000.000000
+3     5833.333333
+4     7166.666667
+5     7000.000000
+6     6466.666667
+7     3233.333333
+8     1052.000000
+9     1013.666667
+10     895.333333
+Name: Expenses, dtype: float64
+
+In [48]: data['3 avg']=data['Expenses'].rolling(window=3).mean()
+
+In [49]: data
+Out[49]:
+         Name  Expenses        3 avg
+0   Bhuvanesh      3000          NaN
+1    Roseline      7000          NaN
+2     Archana      8000  6000.000000
+3      Vinoth      2500  5833.333333
+4      Varsha     11000  7166.666667
+5       Manoj      7500  7000.000000
+6   Gokulnath       900  6466.666667
+7      Nandha      1300  3233.333333
+8     Anandhi       956  1052.000000
+9    Santhiya       785  1013.666667
+10       Rose       945   895.333333
+
+In [50]: data['3 avg']=data['Expenses'].rolling(window=3).std()
+
+In [51]: data
+Out[51]:
+         Name  Expenses        3 avg
+0   Bhuvanesh      3000          NaN
+1    Roseline      7000          NaN
+2     Archana      8000  2645.751311
+3      Vinoth      2500  2929.732639
+4      Varsha     11000  4310.839052
+5       Manoj      7500  4272.001873
+6   Gokulnath       900  5128.677542
+7      Nandha      1300  3700.450423
+8     Anandhi       956   216.591782
+9    Santhiya       785   262.298176
+10       Rose       945    95.709630
+
+In [52]: data['3 avg']=data['Expenses'].rolling(window=3).min()
+
+In [53]: data
+Out[53]:
+         Name  Expenses   3 avg
+0   Bhuvanesh      3000     NaN
+1    Roseline      7000     NaN
+2     Archana      8000  3000.0
+3      Vinoth      2500  2500.0
+4      Varsha     11000  2500.0
+5       Manoj      7500  2500.0
+6   Gokulnath       900   900.0
+7      Nandha      1300   900.0
+8     Anandhi       956   900.0
+9    Santhiya       785   785.0
+10       Rose       945   785.0
