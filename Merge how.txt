@@ -1,0 +1,137 @@
+# Merge How=Inner
+
+Pandas Inner Join
+Inner join is the most common type of join you’ll be working with. It returns a Dataframe with only those rows that have common characteristics. This is similar to the intersection of two sets.
+
+In [8]: data1=pd.DataFrame({'id':[1,2,3,4],'Language':['Java','Python','Html','C++']})
+
+In [9]: data1
+Out[9]:
+   id Language
+0   1     Java
+1   2   Python
+2   3     Html
+3   4      C++
+
+In [10]: data2=pd.DataFrame({'id':[1,2,7,4],'Tools':['Notepad','IPython','Notepad','TurboC']})
+
+In [11]: data2
+Out[11]:
+   id    Tools
+0   1  Notepad
+1   2  IPython
+2   7  Notepad
+3   4   TurboC
+
+In [12]: Inner_join=pd.merge(data1,data2,how='inner',on='id')
+
+In [13]: Inner_join
+Out[13]:
+   id Language    Tools
+0   1     Java  Notepad
+1   2   Python  IPython
+2   4      C++   TurboC
+
+
+In [15]: # How=Left
+
+Pandas Left Join With a left outer join, all the records from the first Dataframe will be displayed, irrespective of whether the keys in the first Dataframe can be found in the second Dataframe. Whereas, for the second Dataframe, only the records with the keys in the second Dataframe that can be found in the first Dataframe will be displayed.
+
+In [16]: left_join=pd.merge(data1,data2,how='left',on='id')
+
+In [17]: left_join
+Out[17]:
+   id Language    Tools
+0   1     Java  Notepad
+1   2   Python  IPython
+2   3     Html      NaN
+3   4      C++   TurboC
+
+
+In [18]: # How=Right
+
+Pandas Right Outer Join
+For a right join, all the records from the second Dataframe will be displayed. However, only the records with the keys in the first Dataframe that can be found in the second Dataframe will be displayed.
+
+In [19]: right_join=pd.merge(data1,data2,how='right',on='id')
+
+In [20]: right_join
+Out[20]:
+   id Language    Tools
+0   1     Java  Notepad
+1   2   Python  IPython
+2   7      NaN  Notepad
+3   4      C++   TurboC
+
+
+# How=Outer
+
+Pandas Full Outer Join
+A full outer join returns all the rows from the left Dataframe, and all the rows from the right Dataframe, and matches up rows where possible, with NaNs elsewhere. But if the Dataframe is complete, then we get the same output.
+
+In [21]: outer_join=pd.merge(data1,data2,how='outer',on='id')
+
+In [22]: outer_join
+Out[22]:
+   id Language    Tools
+0   1     Java  Notepad
+1   2   Python  IPython
+2   3     Html      NaN
+3   4      C++   TurboC
+4   7      NaN  Notepad
+
+------------------------------------------------------------------------
+
+In [24]: df1 = pd.DataFrame({"fruit" : ["apple", "banana", "avocado"],"market_price" : [21, 14, 35]})
+
+In [25]: df2 = pd.DataFrame({"fruit" : ["banana", "apple", "avocado"],"wholesaler_price" : [65, 68, 75]})
+
+In [26]: df1
+Out[26]:
+     fruit  market_price
+0    apple            21
+1   banana            14
+2  avocado            35
+
+In [27]: df2
+Out[27]:
+     fruit  wholesaler_price
+0   banana                65
+1    apple                68
+2  avocado                75
+
+In [29]: Inner=pd.merge(df1,df2,how='inner',on='fruit')
+
+In [30]: Inner
+Out[30]:
+     fruit  market_price  wholesaler_price
+0    apple            21                68
+1   banana            14                65
+2  avocado            35                75
+
+In [31]: left=pd.merge(df1,df2,how='left',on='fruit')
+
+In [32]: left
+Out[32]:
+     fruit  market_price  wholesaler_price
+0    apple            21                68
+1   banana            14                65
+2  avocado            35                75
+
+In [33]: right=pd.merge(df1,df2,how='right',on='fruit')
+
+In [34]: right
+Out[34]:
+     fruit  market_price  wholesaler_price
+0   banana            14                65
+1    apple            21                68
+2  avocado            35                75
+
+In [35]: outer=pd.merge(df1,df2,how="outer",on='fruit')
+
+In [36]: outer
+Out[36]:
+     fruit  market_price  wholesaler_price
+0    apple            21                68
+1   banana            14                65
+2  avocado            35                75
