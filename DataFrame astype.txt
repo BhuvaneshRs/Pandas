@@ -1,0 +1,48 @@
+DataFrame astype
+In [13]: a=pd.DataFrame({'Name':['Bhuvanesh','Roseline','Archana','Santhiya','Varsha','Indhu'],'Age':[2
+    ...: 5,27,29,28,20,24],'Mark':[80,90,90,95,45,65],'City':['Salem','Trichy','Salem','Chennai','Bargu
+    ...: r','Karur']})
+In [14]: a
+Out[14]:
+        Name  Age  Mark     City
+0  Bhuvanesh   25    80    Salem
+1   Roseline   27    90   Trichy
+2    Archana   29    90    Salem
+3   Santhiya   28    95  Chennai
+4     Varsha   20    45   Bargur
+5      Indhu   24    65    Karur
+In [15]: a.dtypes
+Out[15]:
+Name    object
+Age      int64
+Mark     int64
+City    object
+dtype: object
+In [16]: a.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 6 entries, 0 to 5
+Data columns (total 4 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   Name    6 non-null      object
+ 1   Age     6 non-null      int64
+ 2   Mark    6 non-null      int64
+ 3   City    6 non-null      object
+dtypes: int64(2), object(2)
+memory usage: 324.0+ bytes
+In [17]: a['Age']=a['Age'].astype("Int8")
+In [18]: a.dtypes
+Out[18]:
+Name    object
+Age       Int8
+Mark     int64
+City    object
+dtype: object
+In [19]: a['Mark']=a['Mark'].astype("Int8")
+In [20]: a.dtypes
+Out[20]:
+Name    object
+Age       Int8
+Mark      Int8
+City    object
+dtype: object
