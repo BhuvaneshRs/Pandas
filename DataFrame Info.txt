@@ -1,0 +1,81 @@
+DataFrame Info
+	
+In [39]: a=pd.DataFrame({'Name':['Bhuvanesh','Roseline','Archana','Santhiya','Varsha','Indhu'],'Age':[25,27,2
+    ...: 9,28,20,24]})
+In [40]: a
+Out[40]:
+        Name  Age
+0  Bhuvanesh   25
+1   Roseline   27
+2    Archana   29
+3   Santhiya   28
+4     Varsha   20
+5      Indhu   24
+In [41]: a.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 6 entries, 0 to 5
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   Name    6 non-null      object
+ 1   Age     6 non-null      int64
+dtypes: int64(1), object(1)
+memory usage: 228.0+ bytes
+In [42]: a['Mark']=[98,99,100,55,49,77]
+In [43]: a
+Out[43]:
+        Name  Age  Mark
+0  Bhuvanesh   25    98
+1   Roseline   27    99
+2    Archana   29   100
+3   Santhiya   28    55
+4     Varsha   20    49
+5      Indhu   24    77
+In [44]: a.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 6 entries, 0 to 5
+Data columns (total 3 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   Name    6 non-null      object
+ 1   Age     6 non-null      int64
+ 2   Mark    6 non-null      int64
+dtypes: int64(2), object(1)
+memory usage: 276.0+ bytes
+In [48]: a.info(verbose=True)
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 6 entries, 0 to 5
+Data columns (total 3 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   Name    6 non-null      object
+ 1   Age     6 non-null      int64
+ 2   Mark    6 non-null      int64
+dtypes: int64(2), object(1)
+memory usage: 276.0+ bytes
+In [49]: a.info(verbose=False)
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 6 entries, 0 to 5
+Columns: 3 entries, Name to Mark
+dtypes: int64(2), object(1)
+memory usage: 276.0+ bytes
+In [52]: a.memory_usage(index=False)
+Out[52]:
+Name    48
+Age     48
+Mark    48
+dtype: int64
+In [53]: a.memory_usage(index=True)
+Out[53]:
+Index    132
+Name      48
+Age       48
+Mark      48
+dtype: int64
+In [50]: a.memory_usage(index=True,deep=True)
+Out[50]:
+Index    132
+Name     385
+Age       48
+Mark      48
+dtype: int64
