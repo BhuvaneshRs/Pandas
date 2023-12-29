@@ -1,0 +1,77 @@
+In [2]: import pandas as pd
+
+In [3]: data=pd.read_csv("A:/Data Set/employee.csv")
+
+In [4]: data
+Out[4]:
+      Education  JoiningYear       City  PaymentTier  Age  Gender EverBenched  ExperienceInCurrentDomain  LeaveOrNot
+0     Bachelors         2017  Bangalore            3   34    Male          No                          0           0
+1     Bachelors         2013       Pune            1   28  Female          No                          3           1
+2     Bachelors         2014  New Delhi            3   38  Female          No                          2           0
+3       Masters         2016  Bangalore            3   27    Male          No                          5           1
+4       Masters         2017       Pune            3   24    Male         Yes                          2           1
+...         ...          ...        ...          ...  ...     ...         ...                        ...         ...
+4648  Bachelors         2013  Bangalore            3   26  Female          No                          4           0
+4649    Masters         2013       Pune            2   37    Male          No                          2           1
+4650    Masters         2018  New Delhi            3   27    Male          No                          5           1
+4651  Bachelors         2012  Bangalore            3   30    Male         Yes                          2           0
+4652  Bachelors         2015  Bangalore            3   33    Male         Yes                          4           0
+
+[4653 rows x 9 columns]
+
+In [5]: # List out the employees are joined in between 2015 - 2017
+
+In [6]: group=data.groupby("JoiningYear")
+
+In [7]: data[(data['JoiningYear']>2015) & (data['JoiningYear']>=2017)]
+Out[7]:
+      Education  JoiningYear       City  PaymentTier  Age  Gender EverBenched  ExperienceInCurrentDomain  LeaveOrNot
+0     Bachelors         2017  Bangalore            3   34    Male          No                          0           0
+4       Masters         2017       Pune            3   24    Male         Yes                          2           1
+9       Masters         2017  New Delhi            2   37    Male          No                          2           0
+12    Bachelors         2018       Pune            3   32    Male         Yes                          5           1
+15    Bachelors         2017  Bangalore            1   29    Male          No                          3           0
+...         ...          ...        ...          ...  ...     ...         ...                        ...         ...
+4632  Bachelors         2018  Bangalore            3   31  Female          No                          2           1
+4637  Bachelors         2018  Bangalore            3   32    Male         Yes                          2           1
+4639  Bachelors         2017  Bangalore            3   28    Male          No                          0           1
+4645    Masters         2017       Pune            2   31  Female          No                          2           0
+4650    Masters         2018  New Delhi            3   27    Male          No                          5           1
+
+[1475 rows x 9 columns]
+
+In [8]: # Give the count of male and female are joined in 2018 at Bangalore
+
+In [9]: data[(data['Gender']=='Male') & (data['JoiningYear']==2018) & (data['City']=="Banglore")]
+Out[9]:
+Empty DataFrame
+Columns: [Education, JoiningYear, City, PaymentTier, Age, Gender, EverBenched, ExperienceInCurrentDomain, LeaveOrNot]
+Index: []
+
+In [10]: data[(data['Gender']=='Male') & (data['JoiningYear']==2018) & (data['City']=="Bangalore")]
+Out[10]:
+      Education  JoiningYear       City  PaymentTier  Age Gender EverBenched  ExperienceInCurrentDomain  LeaveOrNot
+32    Bachelors         2018  Bangalore            3   26   Male          No                          4           1
+65    Bachelors         2018  Bangalore            3   40   Male          No                          1           1
+90    Bachelors         2018  Bangalore            3   30   Male          No                          0           1
+95          PHD         2018  Bangalore            3   26   Male          No                          4           1
+128   Bachelors         2018  Bangalore            3   25   Male          No                          3           1
+...         ...          ...        ...          ...  ...    ...         ...                        ...         ...
+4503  Bachelors         2018  Bangalore            3   31   Male         Yes                          0           1
+4581  Bachelors         2018  Bangalore            3   26   Male          No                          4           1
+4598  Bachelors         2018  Bangalore            3   31   Male          No                          0           1
+4631  Bachelors         2018  Bangalore            3   32   Male         Yes                          1           1
+4637  Bachelors         2018  Bangalore            3   32   Male         Yes                          2           1
+
+[150 rows x 9 columns]
+
+In [11]: len(data[(data['Gender']=='Male') & (data['JoiningYear']==2018) & (data['City']=="Bangalore")])
+Out[11]: 150
+
+In [12]: male=len(data[(data['Gender']=='Male') & (data['JoiningYear']==2018) & (data['City']=="Bangalore")])
+
+In [13]: female=len(data[(data['Gender']=='Female') & (data['JoiningYear']==2018) & (data['City']=="Bangalore")])
+
+In [15]: print("Male count:",male,"\nFemale count:",female)
+Male count: 150
+Female count: 53
