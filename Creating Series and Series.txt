@@ -1,0 +1,44 @@
+Creating Series and Series
+In [20]: a=pd.Series([i for i in range(5)],index=['a','b','c','d','e'])
+In [21]: a
+Out[21]:
+a    0
+b    1
+c    2
+d    3
+e    4
+dtype: int64
+In [22]: fruits=['apple','banana','mango','grapes','papaya']
+In [23]: a=pd.Series(fruits)
+In [24]: a
+Out[24]:
+0     apple
+1    banana
+2     mango
+3    grapes
+4    papaya
+dtype: object
+In [25]: a[0]
+Out[25]: 'apple'
+
+In [26]: a[2]
+Out[26]: 'mango'
+In [27]: fruits.append("Pineapple")
+In [28]: a
+Out[28]:
+0     apple
+1    banana
+2     mango
+3    grapes
+4    papaya
+dtype: object
+In [29]: a=pd.Series(fruits)
+In [30]: a
+Out[30]:
+0        apple
+1       banana
+2        mango
+3       grapes
+4       papaya
+5    Pineapple
+dtype: object
