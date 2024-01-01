@@ -1,0 +1,18 @@
+Series Using Dict
+In [32]: x=pd.Series({'Name':"Bhuvanesh","Age":25,"City":"Salem"})
+In [33]: x
+Out[33]:
+Name    Bhuvanesh
+Age            25
+City        Salem
+dtype: object
+In [34]: details={'Name':"Bhuvanesh","Age":25,"City":"Salem"}
+In [35]: details
+Out[35]: {'Name': 'Bhuvanesh', 'Age': 25, 'City': 'Salem'}
+In [36]: x=pd.Series(details)
+In [37]: x
+Out[37]:
+Name    Bhuvanesh
+Age            25
+City        Salem
+dtype: object

@@ -1,0 +1,168 @@
+Tabulate
+In [83]: from tabulate import tabulate as table
+In [84]: a=pd.DataFrame({'Name':['Bhuvanesh','Roseline','Archana','Santhiya','Varsha','Indhu'],'Age':[25,27,2
+    ...: 9,28,20,24]})
+
+In [85]: a
+Out[85]:
+        Name  Age
+0  Bhuvanesh   25
+1   Roseline   27
+2    Archana   29
+3   Santhiya   28
+4     Varsha   20
+5      Indhu   24
+In [87]: print(table(a,headers="keys",tablefmt="simple"))
+    Name         Age
+--  ---------  -----
+ 0  Bhuvanesh     25
+ 1  Roseline      27
+ 2  Archana       29
+ 3  Santhiya      28
+ 4  Varsha        20
+ 5  Indhu         24
+In [92]: print(table(a,headers="keys",tablefmt="grid"))
++----+-----------+-------+
+|    | Name      |   Age |
++====+===========+=======+
+|  0 | Bhuvanesh |    25 |
++----+-----------+-------+
+|  1 | Roseline  |    27 |
++----+-----------+-------+
+|  2 | Archana   |    29 |
++----+-----------+-------+
+|  3 | Santhiya  |    28 |
++----+-----------+-------+
+|  4 | Varsha    |    20 |
++----+-----------+-------+
+|  5 | Indhu     |    24 |
++----+-----------+-------+
+In [93]: print(table(a,headers="keys",tablefmt="Simple_grid"))
+    Name         Age
+--  ---------  -----
+ 0  Bhuvanesh     25
+ 1  Roseline      27
+ 2  Archana       29
+ 3  Santhiya      28
+ 4  Varsha        20
+ 5  Indhu         24
+In [95]: print(table(a,headers="keys",tablefmt="rounded_grid"))
+╭────┬───────────┬───────╮
+│    │ Name      │   Age │
+├────┼───────────┼───────┤
+│  0 │ Bhuvanesh │    25 │
+├────┼───────────┼───────┤
+│  1 │ Roseline  │    27 │
+├────┼───────────┼───────┤
+│  2 │ Archana   │    29 │
+├────┼───────────┼───────┤
+│  3 │ Santhiya  │    28 │
+├────┼───────────┼───────┤
+│  4 │ Varsha    │    20 │
+├────┼───────────┼───────┤
+│  5 │ Indhu     │    24 │
+╰────┴───────────┴───────╯
+
+In [96]: print(table(a,headers="keys",tablefmt="heavy_grid"))
+┏━━━━┳━━━━━━━━━━━┳━━━━━━━┓
+┃    ┃ Name      ┃   Age ┃
+┣━━━━╋━━━━━━━━━━━╋━━━━━━━┫
+┃  0 ┃ Bhuvanesh ┃    25 ┃
+┣━━━━╋━━━━━━━━━━━╋━━━━━━━┫
+┃  1 ┃ Roseline  ┃    27 ┃
+┣━━━━╋━━━━━━━━━━━╋━━━━━━━┫
+┃  2 ┃ Archana   ┃    29 ┃
+┣━━━━╋━━━━━━━━━━━╋━━━━━━━┫
+┃  3 ┃ Santhiya  ┃    28 ┃
+┣━━━━╋━━━━━━━━━━━╋━━━━━━━┫
+┃  4 ┃ Varsha    ┃    20 ┃
+┣━━━━╋━━━━━━━━━━━╋━━━━━━━┫
+┃  5 ┃ Indhu     ┃    24 ┃
+┗━━━━┻━━━━━━━━━━━┻━━━━━━━┛
+
+In [97]: print(table(a,headers="keys",tablefmt="mixed_grid"))
+┍━━━━┯━━━━━━━━━━━┯━━━━━━━┑
+│    │ Name      │   Age │
+┝━━━━┿━━━━━━━━━━━┿━━━━━━━┥
+│  0 │ Bhuvanesh │    25 │
+├────┼───────────┼───────┤
+│  1 │ Roseline  │    27 │
+├────┼───────────┼───────┤
+│  2 │ Archana   │    29 │
+├────┼───────────┼───────┤
+│  3 │ Santhiya  │    28 │
+├────┼───────────┼───────┤
+│  4 │ Varsha    │    20 │
+├────┼───────────┼───────┤
+│  5 │ Indhu     │    24 │
+┕━━━━┷━━━━━━━━━━━┷━━━━━━━┙
+
+In [98]: print(table(a,headers="keys",tablefmt="double_grid"))
+╔════╦═══════════╦═══════╗
+║    ║ Name      ║   Age ║
+╠════╬═══════════╬═══════╣
+║  0 ║ Bhuvanesh ║    25 ║
+╠════╬═══════════╬═══════╣
+║  1 ║ Roseline  ║    27 ║
+╠════╬═══════════╬═══════╣
+║  2 ║ Archana   ║    29 ║
+╠════╬═══════════╬═══════╣
+║  3 ║ Santhiya  ║    28 ║
+╠════╬═══════════╬═══════╣
+║  4 ║ Varsha    ║    20 ║
+╠════╬═══════════╬═══════╣
+║  5 ║ Indhu     ║    24 ║
+╚════╩═══════════╩═══════╝
+
+In [99]: print(table(a,headers="keys",tablefmt="fancy_grid"))
+╒════╤═══════════╤═══════╕
+│    │ Name      │   Age │
+╞════╪═══════════╪═══════╡
+│  0 │ Bhuvanesh │    25 │
+├────┼───────────┼───────┤
+│  1 │ Roseline  │    27 │
+├────┼───────────┼───────┤
+│  2 │ Archana   │    29 │
+├────┼───────────┼───────┤
+│  3 │ Santhiya  │    28 │
+├────┼───────────┼───────┤
+│  4 │ Varsha    │    20 │
+├────┼───────────┼───────┤
+│  5 │ Indhu     │    24 │
+╘════╧═══════════╧═══════╛
+
+In [100]: print(table(a,headers="keys",tablefmt="mixed_outline"))
+┍━━━━┯━━━━━━━━━━━┯━━━━━━━┑
+│    │ Name      │   Age │
+┝━━━━┿━━━━━━━━━━━┿━━━━━━━┥
+│  0 │ Bhuvanesh │    25 │
+│  1 │ Roseline  │    27 │
+│  2 │ Archana   │    29 │
+│  3 │ Santhiya  │    28 │
+│  4 │ Varsha    │    20 │
+│  5 │ Indhu     │    24 │
+┕━━━━┷━━━━━━━━━━━┷━━━━━━━┙
+
+In [101]: print(table(a,headers="keys",tablefmt="outline"))
++----+-----------+-------+
+|    | Name      |   Age |
++====+===========+=======+
+|  0 | Bhuvanesh |    25 |
+|  1 | Roseline  |    27 |
+|  2 | Archana   |    29 |
+|  3 | Santhiya  |    28 |
+|  4 | Varsha    |    20 |
+|  5 | Indhu     |    24 |
++----+-----------+-------+
+
+In [102]: print(table(a,headers="keys",tablefmt="fancy_outline"))
+╒════╤═══════════╤═══════╕
+│    │ Name      │   Age │
+╞════╪═══════════╪═══════╡
+│  0 │ Bhuvanesh │    25 │
+│  1 │ Roseline  │    27 │
+│  2 │ Archana   │    29 │
+│  3 │ Santhiya  │    28 │
+│  4 │ Varsha    │    20 │
+│  5 │ Indhu     │    24 │
+╘════╧═══════════╧═══════╛
